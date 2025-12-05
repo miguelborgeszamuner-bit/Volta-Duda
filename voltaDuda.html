@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Duda volta comigo</title> 
+
+  <style>
+    /* Reset simples */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background:#f6f6f6;
+      color:#202122;
+      line-height:1.6;
+      font-size:16px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Layout geral */
+    .page{
+      max-width:1100px;
+      margin:18px auto;
+      background:#fff;
+      border:1px solid #dfe1e6;
+      box-shadow:0 2px 6px rgba(15,23,36,0.05);
+    }
+
+    /* BARRA SUPERIOR (estilo Wikipédia) */
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:10px 16px;
+      background:#f8f9fa;
+      border-bottom:1px solid #e5e7eb;
+    }
+    .topbar .left{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo{
+      width:36px;height:36px;border-radius:4px;
+      background:linear-gradient(180deg,#3b82f6,#0369a1);
+      display:inline-flex;align-items:center;justify-content:center;color:white;font-weight:700;
+      font-size:18px;
+    }
+    .toplinks a{ color:#0645ad; text-decoration:none; margin-left:12px; font-size:0.95rem }
+    .toplinks a:hover{ text-decoration:underline }
+
+    /* Cabeçalho do artigo */
+    header.article-header{
+      padding:22px 24px;
+      border-bottom:1px solid #eee;
+    }
+    header h1{
+      margin:0 0 6px 0;
+      font-size:28px;
+      font-weight:700;
+    }
+    .article-meta{
+      color:#6b7280;
+      font-size:0.95rem;
+    }
+
+    /* Conteúdo com coluna lateral */
+    .content-area{
+      display:flex;
+      gap:24px;
+      padding:24px;
+    }
+
+    /* Coluna principal */
+    main.article-body{
+      flex:1 1 640px;
+      min-width:0;
+    }
+    /* Estilo do TOC (sumário) */
+    .toc{
+      background:#f8f9fa;
+      border:1px solid #e5e7eb;
+      padding:12px;
+      border-radius:4px;
+      font-size:0.95rem;
+      margin-bottom:16px;
+    }
+    .toc h2{ margin:0 0 8px 0; font-size:0.95rem }
+    .toc ul{ margin:0; padding-left:18px }
+    .toc a{ color:#0645ad; text-decoration:none }
+    .toc a:hover{ text-decoration:underline }
+
+    /* Texto e elementos do artigo */
+    article p{ margin:0 0 1rem 0 }
+    article h2{ font-size:20px; margin:1.25rem 0 0.6rem 0; border-bottom:1px dashed #e6e7ea; padding-bottom:6px }
+    article h3{ font-size:17px; margin:1rem 0 0.5rem 0 }
+    article ul, article ol { margin:0 0 1rem 1.25rem }
+    blockquote{
+      margin:0 0 1rem 0;
+      padding:10px 12px;
+      background:#fbfbfb;
+      border-left:4px solid #d1d5db;
+      color:#334155;
+    }
+    pre, code{
+      background:#f4f6f8;
+      padding:4px 6px;
+      border-radius:4px;
+      font-family: Menlo, Consolas, monospace;
+      font-size:0.95rem;
+    }
+
+    /* Imagens e figure */
+    figure{ margin:0 0 1rem 0 }
+    figure img{ max-width:100%; height:auto; border:1px solid #e6e9ef; border-radius:4px }
+    figcaption{ font-size:0.9rem; color:#6b7280; margin-top:6px }
+
+    /* NOTA LATERAL / SIDEBAR */
+    aside.sidebar{
+      width:260px;
+      flex:0 0 260px;
+    }
+    .infobox{
+      border:1px solid #e5e7eb;
+      background:#fff;
+      padding:12px;
+      font-size:0.95rem;
+      border-radius:4px;
+      margin-bottom:16px;
+      box-shadow:0 1px 3px rgba(15,23,36,0.03);
+    }
+    .infobox dt{ font-weight:700; margin-top:8px }
+    .infobox dd{ margin:0 0 8px 0; color:#374151 }
+
+    .sidebar .links{
+      background:#f8f9fa;
+      border:1px solid #eaecef;
+      padding:10px;
+      border-radius:4px;
+      font-size:0.95rem;
+    }
+    .sidebar .links a{ display:block; color:#0645ad; text-decoration:none; margin-bottom:6px }
+    .sidebar .links a:hover{ text-decoration:underline }
+
+    /* REFERÊNCIAS E RODAPÉ */
+    .references{ margin-top:20px; font-size:0.95rem }
+    .references ol{ padding-left:1.1rem }
+
+    footer.page-footer{
+      padding:12px 16px;
+      font-size:0.9rem;
+      color:#6b7280;
+      border-top:1px solid #eee;
+      background:#fafafa;
+      text-align:left;
+    }
+
+    /* Responsivo */
+    @media (max-width:900px){
+      .content-area{ flex-direction:column; padding:16px }
+      aside.sidebar{ width:100%; order:2 }
+      main.article-body{ order:1 }
+      .page{ margin:12px }
+    }
+    @media (max-width:480px){
+      header h1{ font-size:20px }
+      .topbar .left{ gap:8px }
+      .logo{ width:32px;height:32px;font-size:16px }
+    }
+  </style>
+</head>
+<body>
+  <div class="page" role="document">
+    <!-- BARRA SUPERIOR -->
+    <div class="topbar" role="banner">
+      <div class="left">
+        <div class="logo" aria-hidden="true">E</div>
+        <div>
+          <strong>Volta comigo Duda</strong><br>
+          <small style="color:#6b7280">Eu sinto saudades de você Duda</small>
+        </div>
+      </div>
+
+      <nav class="toplinks" aria-label="Ferramentas da página">
+        <a href="#" title="Visualizar histórico">Saudades</a>
+        <a href="#" title="Editar esta página">Amor</a>
+        <a href="#" title="Versão móvel">Duda</a>
+      </nav>
+    </div>
+
+    <!-- CABEÇALHO DO ARTIGO -->
+    <header class="article-header">
+      <h1 id="firstHeading">Volta com o Bryan Duda</h1>
+      <div class="article-meta">Eu sinto muitas saudades dela, todo dia me lembro</div>
+    </header>
+
+    <!-- ÁREA PRINCIPAL: ARTIGO + SIDEBAR -->
+    <div class="content-area">
+      <main class="article-body" role="main">
+        <!-- Sumário / TOC -->
+        <nav class="toc" aria-label="Sumário">
+          <h2>Duda</h2>
+          <ul>
+            <li><a href="#sec-intro">A negação</a></li>
+            <li><a href="#sec-historia">A saudade</a></li>
+            <li><a href="#sec-caracteristicas">A vontade</a></li>
+            <li><a href="#sec-referencias">A aceitação</a></li>
+          </ul>
+        </nav>
+
+        <!-- Artigo -->
+        <article>
+          <p><strong>Duda:</strong> Meu amor por voce duda escala nivel global, maior que qual DPS do Anime last stand.</p>
+
+          <h2 id="sec-intro">Volta</h2>
+          <p>Eu ripbryan2010 estou com muitas saudades do nosso amor lindo.</p>
+
+          <h2 id="sec-historia">História de amor</h2>
+          <p>o nosso amor for historico, apenas 2 meses mais historico.</p>
+          <h3>Origens</h3>
+          <p>Lembro quando voce me beijou por dó.</p>
+
+          <h2 id="sec-caracteristicas">Características</h2>
+          <p>Voce tinha mo bundao e peitao, sua pele branca e altura minuscula parecia uma criança, adorava.</p>
+
+          <figure>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqHNT9Njpz1OkoExW95xsE5DrsP0jDtHqvHQ&s"
+              alt="Ilustração do tópico">
+            <figcaption>Voce é tao linda, eu sinto tanta Saudades</figcaption>
+          </figure>
+
+          <blockquote>
+            "Duda, volta comigo🙏🥲" — VOOOOOOLTA
+          </blockquote>
+
+          <h2 id="sec-referencias">Referências</h2>
+          <div class="references" aria-label="Referências">
+            <ol>
+              <li>Dereiss com muito tempo livre. <em>Anime vanguard melhor jogo</em>. Dereiszamunerpauzudo.</li>
+              <li>Lei da negação:Volta pro bryan duda.</li>
+            </ol>
+          </div>
+        </article>
+      </main>
+
+      <!-- SIDEBAR / INFObox -->
+      <aside class="sidebar" role="complementary" aria-label="Informações rápidas">
+        <div class="infobox" role="note" aria-label="Infobox">
+          <dl>
+            <dt>Nome</dt><dd>Duda</dd>
+            <dt>Tipo</dt><dd>Duda</dd>
+            <dt>Período</dt><dd>Volta duda</dd>
+            <dt>Fonte</dt><dd><a href="#" style="color:#0645ad;text-decoration:none">Bryan</a></dd>
+          </dl>
+        </div>
+
+        <div class="links">
+          <strong>Ver também</strong>
+          <a href="#">Laura</a>
+          <a href="#">Mel</a>
+          <a href="#">Lais</a>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="page-footer" role="contentinfo">
+      <div>Esta pagina fiz no meu tempo livre para lembrar o bryan da duda</div>
+    </footer>
+  </div>
+</body>
+</html>
